@@ -22,3 +22,9 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Custom AI and IDE configs
+/.claude
+/.mcp.json
+/CLAUDE.md
+/boost.json
