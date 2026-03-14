@@ -9,7 +9,7 @@ This project is an **Inventory Management System** designed specifically for our
 
 ## Planned Features & Roadmap
 - [x] Basic project setup & routing (e.g., API health checks)
-- [ ] **JWT Authentication:** Secure API endpoint access using JSON Web Tokens.
+- [x] **JWT Authentication:** Secure API endpoint access using JSON Web Tokens.
 - [ ] **OAuth2 Integration:** Advanced authorization flows for third-party access or single sign-on.
 - [ ] **Real-time Broadcasting:** Implementing **Laravel Reverb** for live stock updates, alerts, and real-time notifications.
 - [ ] **Role-Based Access Control (RBAC):** Distinct access levels for administrators, inventory managers, and general staff.
