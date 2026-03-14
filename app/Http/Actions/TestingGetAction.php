@@ -2,10 +2,10 @@
 
 namespace App\Http\Actions;
 
-class TestingAction
+class TestingGetAction
 {
     public function execute()
     {
-        dd('It works, congrats !');
+        return 'Get works, congrats !';
     }
 }
