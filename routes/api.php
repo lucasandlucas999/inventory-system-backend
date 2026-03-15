@@ -5,6 +5,7 @@ use App\Http\Controllers\TestingGetController;
 use App\Http\Controllers\TestingPostController;
 use App\Http\Controllers\GetUsersController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AuditLogController;
 
 Route::prefix('health')->group(function () {
     Route::get('', [TestingGetController::class , '__invoke']);
@@ -18,3 +19,7 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
     Route::post('refresh', [AuthController::class , 'refresh']);
     Route::post('me', [AuthController::class , 'me']);
 });
+
+
+//Rutas de auditoría
+Route::get('audit_logs', [AuditLogController::class , 'index']);
