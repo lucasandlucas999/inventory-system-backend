@@ -5,11 +5,12 @@ use App\Http\Controllers\TestingGetController;
 use App\Http\Controllers\TestingPostController;
 use App\Http\Controllers\GetUsersController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DatabaseHealthController;
 
 Route::prefix('health')->group(function () {
     Route::get('', [TestingGetController::class , '__invoke']);
     Route::post('', [TestingPostController::class , '__invoke']);
-    Route::get('users', [GetUsersController::class , '__invoke']);
+    Route::get('db', [DatabaseHealthController::class , '__invoke']);
 });
 
 Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
