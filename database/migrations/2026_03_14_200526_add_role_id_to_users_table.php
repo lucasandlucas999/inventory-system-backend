@@ -24,6 +24,13 @@ return new class extends Migration
             'role_id' => 1,
         ]);
 
+        DB::table('users')->insert([
+            'name' => 'user',
+            'email' => 'user@user.com',
+            'password' => Hash::make('password'),
+            'role_id' => 2,
+        ]);
+
     }
 
     /**

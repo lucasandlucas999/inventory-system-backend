@@ -6,6 +6,7 @@ use Database\Factories\Domains\Customers\CustomerFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Domains\Sales\Models\Invoice;
 
 class Customer extends Model
 {
@@ -28,6 +29,11 @@ class Customer extends Model
 
     protected static function newFactory()
     {
-        return CustomerFactory::new();
+        return CustomerFactory::new ();
+    }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
     }
 }
