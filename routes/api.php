@@ -6,7 +6,6 @@ use App\Http\Controllers\TestingPostController;
 use App\Http\Controllers\GetUsersController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DatabaseHealthController;
-use App\Domains\Customers\Controllers\IndexCustomersController;
 
 Route::prefix('health')->group(function () {
     Route::get('', [TestingGetController::class , '__invoke']);
@@ -21,6 +20,20 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
     Route::post('me', [AuthController::class , 'me']);
 });
 
-Route::prefix('customers')->group(function () {
-    Route::get('', [IndexCustomersController::class , '__invoke']);
+// Domain Routes with authentication
+Route::middleware('auth:api')->group(function () {
+    // Customers Domain
+    require __DIR__ . '/../app/Domains/Customers/Routes/api.php';
+
+    // Products Domain
+    require __DIR__ . '/../app/Domains/Products/Routes/api.php';
+
+    // Purchases Domain
+    require __DIR__ . '/../app/Domains/Purchases/Routes/api.php';
+
+    // Sales Domain
+    require __DIR__ . '/../app/Domains/Sales/Routes/api.php';
+
+    // Inventory Domain
+    require __DIR__ . '/../app/Domains/Inventory/Routes/api.php';
 }); 
