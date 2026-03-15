@@ -20,7 +20,7 @@ This project is an **Inventory Management System** designed specifically for our
 ## Prerequisites
 - PHP >= 8.2
 - Composer
-- A supported Database (MySQL / PostgreSQL / SQLite)
+- **PostgreSQL** (Default Database)
 - Node.js & NPM (for compiling any frontend assets or broadcasting dependencies)
 
 ## Installation & Setup
@@ -41,7 +41,7 @@ This project is an **Inventory Management System** designed specifically for our
    ```bash
    cp .env.example .env
    ```
-   *Make sure to update your database credentials in the `.env` file.*
+   *Make sure to update your PostgreSQL credentials in the `.env` file and create the database (e.g., `backend`) before running migrations.*
 
 4. **Generate Application Key**
    ```bash
