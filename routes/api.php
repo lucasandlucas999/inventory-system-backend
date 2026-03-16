@@ -23,4 +23,8 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
 
 Route::prefix('customers')->group(function () {
     Route::get('', [IndexCustomersController::class , '__invoke']);
-}); 
+});
+
+
+//Rutas de auditoría
+Route::get('audit_logs', [AuditLogController::class , 'index']);
