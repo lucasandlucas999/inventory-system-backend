@@ -36,4 +36,8 @@ Route::middleware('auth:api')->group(function () {
 
     // Inventory Domain
     require __DIR__ . '/../app/Domains/Inventory/Routes/api.php';
-}); 
+});
+
+
+//Rutas de auditoría
+Route::get('audit_logs', [AuditLogController::class , 'index']);
