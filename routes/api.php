@@ -20,24 +20,9 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
     Route::post('me', [AuthController::class , 'me']);
 });
 
-// Domain Routes with authentication
-Route::middleware('auth:api')->group(function () {
-    // Customers Domain
-    require __DIR__ . '/../app/Domains/Customers/Routes/api.php';
-
-    // Products Domain
-    require __DIR__ . '/../app/Domains/Products/Routes/api.php';
-
-    // Purchases Domain
-    require __DIR__ . '/../app/Domains/Purchases/Routes/api.php';
-
-    // Sales Domain
-    require __DIR__ . '/../app/Domains/Sales/Routes/api.php';
-
-    // Inventory Domain
-    require __DIR__ . '/../app/Domains/Inventory/Routes/api.php';
-});
-
+foreach (glob(app_path('Domains/*/Routes/api.php')) as $route) {
+    Route::middleware('api')->group($route);
+}
 
 //Rutas de auditoría
 Route::get('audit_logs', [AuditLogController::class , 'index']);
