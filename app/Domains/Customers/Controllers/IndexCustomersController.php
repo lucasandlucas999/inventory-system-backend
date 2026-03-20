@@ -17,7 +17,7 @@ class IndexCustomersController extends Controller
                 'data' => $action->execute()
             ], 200);
         }
-        catch (Exception $e) {
+        catch (\Exception $e) {
             return response()->json([
                 'success' => false,
                 'message' => $e->getMessage()
