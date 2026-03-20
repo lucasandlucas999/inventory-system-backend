@@ -63,6 +63,47 @@ This project is an **Inventory Management System** designed specifically for our
 Currently implemented testing/health routes:
 - `GET /api/health` - API Health check
 
+## CRUD Generator Command
+This project includes a custom Artisan command to scaffold CRUD endpoints following the domain structure and single-action controller pattern.
+
+### Command
+```bash
+php artisan app:crud {Model} [--domain=DomainName] [--index] [--show] [--store] [--update] [--destroy]
+```
+
+### Behavior
+- Creates one controller per action using `__invoke()`:
+  - `Index{Model}Controller`
+  - `Show{Model}Controller`
+  - `Store{Model}Controller`
+  - `Update{Model}Controller`
+  - `Destroy{Model}Controller`
+- Creates one action class per action and injects it into the controller constructor.
+- Controllers are generated to call:
+  - `$this->someAction->execute(...)`
+- Creates request classes for:
+  - `Store{Model}Request`
+  - `Update{Model}Request`
+- Updates or creates domain routes file:
+  - `app/Domains/{Domain}/Routes/api.php`
+  - Adds `use` imports for generated controllers (no full inline FQCN in routes).
+
+### Defaults
+- If no action flags are provided, all CRUD actions are generated.
+- If `--domain` is omitted, the domain defaults to the plural model name.
+
+### Examples
+```bash
+# Full CRUD in Products domain
+php artisan app:crud Product --domain=Products
+
+# Only read actions
+php artisan app:crud Product --domain=Products --index --show
+
+# Only write actions
+php artisan app:crud Product --domain=Products --store --update --destroy
+```
+
 ## Collaboration & Contributing
 As this is a group project, please follow our standard Git workflow:
 1. Create a descriptive feature branch (`git checkout -b feature/jwt-auth`)
