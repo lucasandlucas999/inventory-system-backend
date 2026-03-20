@@ -9,7 +9,7 @@ use App\Domains\Customers\Actions\GetAllCustomersAction;
 class IndexCustomersController extends Controller
 {
 
-    public function __invoke(Request $request, GetAllCustomersAction $action)
+    public function __invoke(GetAllCustomersAction $action)
     {
         try {
             return response()->json([
