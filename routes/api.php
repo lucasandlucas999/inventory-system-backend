@@ -6,6 +6,7 @@ use App\Http\Controllers\TestingPostController;
 use App\Http\Controllers\GetUsersController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DatabaseHealthController;
+use App\Http\Controllers\AuditLogController;
 
 Route::prefix('health')->group(function () {
     Route::get('', [TestingGetController::class , '__invoke']);
